@@ -43,10 +43,22 @@ body {
     color: #ffffff;
 }
 
-.card-img-top {
-    height: 200px;
-    object-fit: cover;
+#cartItems {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#billingForm {
+    background-color: #333333;
+    padding: 1rem;
     border-radius: 0.5rem;
+}
+
+footer {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    padding: 0.5rem;
+    text-align: center;
 }
 
 .card {
@@ -79,6 +91,29 @@ body {
     color: #d1d1d1;
 }
 
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #444444;
+    border-radius: 0.25rem;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+input::placeholder,
+select::placeholder {
+    color: #888888;
+}
+
 .btn-primary {
     background-color: #2ab149;
     border: none;
@@ -104,37 +139,20 @@ body {
     border: none;
 }
 
-#cartItems {
-    max-height: 400px;
-    overflow-y: auto;
+.message-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-#billingForm {
-    background-color: #333333;
-    padding: 1rem;
-    border-radius: 0.5rem;
-}
-
-footer {
-    background-color: #1f1f1f;
-    color: #ffffff;
-    padding: 0.5rem;
-    text-align: center;
-}
-
-input[type="text"],
-input[type="number"],
-select {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #444444;
-    border-radius: 0.25rem;
-    background-color: #ffffff;
-    color: #000000;
-}
-
-input::placeholder,
-select::placeholder {
-    color: #888888;
+.message-success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }

@@ -28,6 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
         cartTotal.textContent = total.toFixed(2);
     }
 
+    function displayMessage(message, type) {
+        messageContainer.innerHTML = `<div class="${type}">${message}</div>`;
+    }
+
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', function() {
             const id = this.getAttribute('data-id');
@@ -52,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     checkoutButton.addEventListener('click', function() {
         if (cart.length === 0) {
-            messageContainer.innerHTML = '<div class="alert alert-warning">El carrito está vacío.</div>';
+            displayMessage('El carrito está vacío.', 'message-warning');
             return;
         }
         billingForm.classList.remove('d-none');
@@ -67,11 +71,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const paymentMethod = document.getElementById('paymentMethod').value;
 
         if (!name || !address || !paymentMethod) {
-            messageContainer.innerHTML = '<div class="alert alert-warning">Por favor, complete todos los campos.</div>';
+            displayMessage('Por favor, complete todos los campos.', 'message-warning');
             return;
         }
 
-        messageContainer.innerHTML = '<div class="alert alert-success">¡Gracias por su compra!</div>';
+        displayMessage('¡Gracias por su compra!', 'message-success');
         cart = [];
         updateCart();
         billingForm.classList.add('d-none');

@@ -1,5 +1,3 @@
-// main.js
-
 const products = [
     { id: '1', title: 'Violin 1', price: 2000, img: './img/violin1.jpg', description: 'Violín clásico de madera maciza, tono cálido y profundo, ideal para música barroca.' },
     { id: '2', title: 'Violin 2', price: 2500, img: './img/violin2.jpg', description: 'Violín vintage con barniz desgastado, tono dulce y nostálgico, ideal para música folclórica.' },
@@ -9,7 +7,6 @@ const products = [
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Función para renderizar productos en el HTML
 function renderProducts() {
     const productContainer = document.getElementById('productContainer');
     productContainer.innerHTML = '';
@@ -32,7 +29,6 @@ function renderProducts() {
     });
 }
 
-// Función para actualizar el carrito
 function updateCart() {
     const cartItemsContainer = document.getElementById('cartItems');
     const cartCount = document.getElementById('cartCount');
@@ -57,11 +53,9 @@ function updateCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Inicialización
 renderProducts();
 updateCart();
 
-// Manejo de eventos
 document.getElementById('productContainer').addEventListener('click', function(event) {
     if (event.target.classList.contains('add-to-cart')) {
         const id = event.target.getAttribute('data-id');
@@ -101,7 +95,6 @@ document.getElementById('checkoutForm').addEventListener('submit', function(even
     const messageContainer = document.getElementById('messageContainer');
     messageContainer.innerHTML = `<div class="alert alert-success">Gracias, ${name}. Tu pedido ha sido recibido y el total es $${document.getElementById('cartTotal').textContent}. Estás pagando con ${paymentMethod}. Tu pedido será enviado a ${address}.</div>`;
 
-    // Limpiar carrito
     cart = [];
     updateCart();
     document.getElementById('billingForm').classList.add('d-none');

@@ -40,6 +40,11 @@ function updateCart() {
         listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
         listItem.innerHTML = `
             ${item.title} - $${item.price} (Cantidad: ${item.quantity})
+            <div class="quantity-controls">
+                <button type="button" class="btn btn-secondary btn-sm decrease" data-id="${item.id}">-</button>
+                <span class="quantity">${item.quantity}</span>
+                <button type="button" class="btn btn-secondary btn-sm increase" data-id="${item.id}">+</button>
+            </div>
             <button type="button" class="btn-close" aria-label="Close" data-id="${item.id}"></button>
         `;
         cartItemsContainer.appendChild(listItem);
@@ -77,6 +82,17 @@ document.getElementById('cartItems').addEventListener('click', function(event) {
     if (event.target.classList.contains('btn-close')) {
         const id = event.target.getAttribute('data-id');
         cart = cart.filter(item => item.id !== id);
+        updateCart();
+    } else if (event.target.classList.contains('increase') || event.target.classList.contains('decrease')) {
+        const id = event.target.getAttribute('data-id');
+        const item = cart.find(item => item.id === id);
+        
+        if (event.target.classList.contains('increase')) {
+            item.quantity++;
+        } else if (event.target.classList.contains('decrease')) {
+            if (item.quantity > 1) item.quantity--;
+        }
+        
         updateCart();
     }
 });

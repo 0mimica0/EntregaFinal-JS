@@ -1,10 +1,3 @@
-const products = [
-    { id: '1', title: 'Violin 1', price: 2000, img: './img/violin1.jpg', description: 'Violín clásico de madera maciza, tono cálido y profundo, ideal para música barroca.' },
-    { id: '2', title: 'Violin 2', price: 2500, img: './img/violin2.jpg', description: 'Violín vintage con barniz desgastado, tono dulce y nostálgico, ideal para música folclórica.' },
-    { id: '3', title: 'Violin 3', price: 3000, img: './img/violin3.jpg', description: 'Violín de fibra de carbono ultraligero, tono brillante y proyectado, ideal para el aire libre.' },
-    { id: '4', title: 'Violin 4', price: 4000, img: './img/violin4.jpg', description: 'Violín eléctrico negro brillante, sonido cristalino con efectos ajustables para uso en exterior.' }
-];
-
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 function renderProducts() {
@@ -109,9 +102,14 @@ document.getElementById('checkoutForm').addEventListener('submit', function(even
     const paymentMethod = document.getElementById('paymentMethod').value;
 
     const messageContainer = document.getElementById('messageContainer');
-    messageContainer.innerHTML = `<div class="alert alert-success">Gracias, ${name}. Tu pedido ha sido recibido y el total es $${document.getElementById('cartTotal').textContent}. Estás pagando con ${paymentMethod}. Tu pedido será enviado a ${address}.</div>`;
+    messageContainer.innerHTML = `
+        <div class="alert alert-success">Gracias, ${name}. Tu pedido ha sido recibido y el total es $${document.getElementById('cartTotal').textContent}. Estás pagando con ${paymentMethod}. Tu pedido será enviado a ${address}.</div>
+    `;
 
     cart = [];
     updateCart();
+
     document.getElementById('billingForm').classList.add('d-none');
+
+    document.getElementById('checkout').style.display = 'none';
 });

@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Cargar productos desde el JSON
     fetch('./productos.json')
         .then(response => {
             if (!response.ok) {
